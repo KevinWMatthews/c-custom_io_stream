@@ -47,7 +47,7 @@ int main(void)
     fprintf(stdout, "\nReading:\n");
     // size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
     count = fread(buffer, sizeof(buffer[0]), sizeof(buffer), file);
-    if (count == sizeof(buffer))
+    if (count != sizeof(buffer))
         fprintf(stderr, "Failed to read\n");
 
     fprintf(stdout, "\nSeeking:\n");
