@@ -59,8 +59,10 @@ int main(void)
     fprintf(stdout, "\nWriting:\n");
     // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
     count = fwrite(buffer, sizeof(buffer[0]), sizeof(buffer), file);
-    if (count == 0)
+    if (count != sizeof(buffer))
         fprintf(stderr, "Failed to write\n");
+    else
+        fprintf(stdout, "Wrote n bytes: %zd\n", count);
 
     fprintf(stdout, "\nFlushing:\n");
     // int fflush(FILE *stream);

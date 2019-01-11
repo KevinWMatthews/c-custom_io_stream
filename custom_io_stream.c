@@ -113,6 +113,8 @@ int main(void)
     count = fwrite(buffer, sizeof(buffer[0]), sizeof(buffer), file);
     if (count != sizeof(buffer))
         fprintf(stderr, "Failed to write\n");
+    else
+        fprintf(stdout, "Wrote n bytes: %zd\n", count);
 
     fprintf(stdout, "\nFlushing:\n");
     // int fflush(FILE *stream);
