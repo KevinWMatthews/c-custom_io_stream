@@ -24,7 +24,7 @@ void null_io(void)
      *      cookie_close_function_t *close;
      *  } cookie_io_functions_t;
      */
-    cookie_io_functions_t null_io_funcs = {
+    cookie_io_functions_t io_funcs = {
         .read = NULL,
         .write = NULL,
         .seek = NULL,
@@ -32,8 +32,8 @@ void null_io(void)
     };
 
     // FILE *fopencookie(void *cookie, const char *mode, cookie_io_functions_t io_funcs);
-    FILE *null_io = fopencookie((void *)&impl_data, mode, null_io_funcs);
-    if (!null_io)
+    FILE *file = fopencookie((void *)&impl_data, mode, io_funcs);
+    if (!file)
     {
         fprintf(stderr, "Failed to open\n");
         return;
@@ -43,17 +43,17 @@ void null_io(void)
     size_t result = 0;
 
     // size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);
-    result = fread(buffer, sizeof(buffer[0]), sizeof(buffer), null_io);
+    result = fread(buffer, sizeof(buffer[0]), sizeof(buffer), file);
     if (result == 0)
         fprintf(stderr, "Failed to read\n");
 
     // size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);
-    result = fwrite(buffer, sizeof(buffer[0]), sizeof(buffer), null_io);
+    result = fwrite(buffer, sizeof(buffer[0]), sizeof(buffer), file);
     if (result == 0)
         fprintf(stderr, "Failed to write\n");
 
     // int fclose(FILE *stream);
-    if (fclose(null_io) != 0)
+    if (fclose(file) != 0)
         fprintf(stderr, "Failed to close\n");
 }
 
