@@ -1,4 +1,4 @@
-# Custom FILE Streams
+# Custom IO Streams in C
 
 Create custom `FILE` objects for use with C stdio functions.
 
