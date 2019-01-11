@@ -10,7 +10,7 @@ typedef struct COOKIE
     int unused;
 } COOKIE;
 
-int main(void)
+void null_io(void)
 {
     COOKIE impl_data = {0};
 
@@ -36,7 +36,7 @@ int main(void)
     if (!null_io)
     {
         fprintf(stderr, "Failed to open\n");
-        return -1;
+        return;
     }
 
     char buffer[1024] = {0};
@@ -55,6 +55,10 @@ int main(void)
     // int fclose(FILE *stream);
     if (fclose(null_io) != 0)
         fprintf(stderr, "Failed to close\n");
+}
 
+int main(void)
+{
+    null_io();
     return 0;
 }
