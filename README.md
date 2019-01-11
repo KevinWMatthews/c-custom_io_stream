@@ -20,7 +20,7 @@ GNU provides an extension that allows us to create custom `FILE` types:
 
 Official docs at man7.org (Linux, not POSIX):
 
-  * [fopencooie](http://man7.org/linux/man-pages/man3/fopencookie.3.html)
+  * [fopencookie](http://man7.org/linux/man-pages/man3/fopencookie.3.html)
   * [fclose](http://man7.org/linux/man-pages/man3/fclose.3.html)
   * [fread](http://man7.org/linux/man-pages/man3/fread.3.html)
   * [fwrite](http://man7.org/linux/man-pages/man3/fwrite.3.html)
